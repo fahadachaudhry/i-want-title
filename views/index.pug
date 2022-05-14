@@ -1,0 +1,55 @@
+extends layout
+
+
+block content
+  div(class="container")
+    div(class="col-wide")
+      include topbar.pug
+      div(class="results-block")
+        h1 Query
+        p= query
+        h1 Result
+        ul
+          each val in address
+            li(class='result-block') 
+              div(class='result')
+                span= val.query
+                span= val.title
+    div(class="col-thin border-left")
+      div(class="index-credentials shadow")
+        include credentials.pug
+      //- p="..."
+      //- p="/"+method+"/I/want/title/"
+      //- p="..."
+      //- p=originalUrl
+      //- p="..."
+      h1 Quick Links
+      p These are the tests I ran to verify the implementation. You can click any one of these to quickly navigate to them.
+      div(class="tests")
+        a(href="/"+method+"/I/want/title/")
+          div(class=("example-block " + (originalUrl === "/"+method+"/I/want/title/" ? "selected-example-block" : "")) )
+            h2 Empty Query String
+            p ...?
+        a(href="/"+method+"/I/want/title/?address=asdsadsadsadsadsa")
+          div(class=("example-block " + (originalUrl === "/"+method+"/I/want/title/?address=asdsadsadsadsadsa" ? "selected-example-block" : "")) )
+            h2 Invalid URL
+            p ...?address=asdsadsadsadsadsa
+        a(href="/"+method+"/I/want/title/?address=http://yahoo.com")
+          div(class=("example-block " + (originalUrl === "/"+method+"/I/want/title/?address=http://yahoo.com" ? "selected-example-block" : "")) )
+            h2 Single Address
+            p ...?address=http://yahoo.com
+        a(href="/"+method+"/I/want/title/?address=google.com&address=asdsadsadsa&address=http://behance.net&address=qweewrqew")
+          div(class=("example-block " + (originalUrl === "/"+method+"/I/want/title/?address=google.com&address=asdsadsadsa&address=http://behance.net&address=qweewrqew" ? "selected-example-block" : "")) )
+            h2 2 Valid and 2 Invalid URLs
+            p ...?address=google.com
+            p &address=asdsadsadsa
+            p &address=http://behance.net
+            p &address=qweewrqew
+        a(href="/"+method+"/I/want/title/?address=google.com&address=www.dawn.com/events/&address=gmail.com&address=http://behance.net&address=linkedIn.com")
+          div(class=("example-block " + (originalUrl === "/"+method+"/I/want/title/?address=google.com&address=www.dawn.com/events/&address=gmail.com&address=http://behance.net&address=linkedIn.com" ? "selected-example-block" : "")) )
+            h2 5 Address
+            p ...?address=google.com
+            p &address=www.dawn.com/events/
+            p &address=gmail.com
+            p &address=http://behance.net
+            p &address=linkedIn.com

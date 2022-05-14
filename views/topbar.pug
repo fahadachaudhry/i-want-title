@@ -1,0 +1,17 @@
+block content
+  div(class="d-flex align-items-start topbar-block justify-content-between")
+    div
+      h1 I/Want/Title
+      h4 Please click on the method names to alternate between code logics
+      h1 ➡️➡️➡️
+    div(class="topbar d-flex align-items-center")
+      a(href="/3/I/want/title/" class="item "+(method === 3 ? "selected" : ""))
+        div
+          h3 Method 1 and 3 (combined)
+          p Implement the above task using plain node.js callbacks.
+          p Implement the above using Promises.
+      a(href="/2/I/want/title/" class="item "+(method === 2 ? "selected" : ""))
+        div
+          h3 Method 2
+          p Implement the above using some kind of flow library
+          p async.js
